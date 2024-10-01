@@ -1,0 +1,63 @@
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),  
+    Username VARCHAR(100) NOT NULL UNIQUE,  
+    PasswordHash NVARCHAR(255) NOT NULL,  
+    Email VARCHAR(255) NOT NULL UNIQUE,  
+    Role VARCHAR(50) NOT NULL,  
+    CreatedAt DATETIME DEFAULT GETDATE(),  
+    IsActive BIT DEFAULT 1  -- Account status, 1 = active, 0 = inactive
+);
+ALTER TABLE Users
+ADD FirstName NVARCHAR(100) NOT NULL DEFAULT '',
+    LastName NVARCHAR(100) NOT NULL DEFAULT '',
+    ContactNumber NVARCHAR(20) NOT NULL DEFAULT '',
+    Address NVARCHAR(255) NOT NULL DEFAULT '',
+    City NVARCHAR(100) NOT NULL DEFAULT '',
+    State NVARCHAR(100) NOT NULL DEFAULT '';
+select * from [dbo].[Users]
+
+CREATE TABLE Admins (
+    AdminID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    Username NVARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Donations (
+    DonationID UNIQUEIDENTIFIER PRIMARY KEY,      
+    UserID UNIQUEIDENTIFIER NOT NULL,           
+    DonationType NVARCHAR(100) NOT NULL,           
+    Quantity INT NOT NULL,                         
+    Description NVARCHAR(255),                
+    DonationDate DATETIME NOT NULL,             
+    IsDistributed BIT NOT NULL DEFAULT 0,         
+    DonorName NVARCHAR(100) NOT NULL,             
+    DonorEmail NVARCHAR(100) NOT NULL,      
+    DeliveryDate DATE                              
+);
+
+-- Foreign key constraint for the UserID column
+ALTER TABLE Donations
+ADD CONSTRAINT FK_Donations_Users
+FOREIGN KEY (UserID) REFERENCES Users(UserID);
+
+select * from [dbo].[Donations]
+
+
+CREATE TABLE Volunteers (
+    VolunteerID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(), 
+    UserID UNIQUEIDENTIFIER NOT NULL,                        
+    TaskType NVARCHAR(100) NOT NULL,                         
+    Availability NVARCHAR(100) NOT NULL
+);
+CREATE TABLE IncidentReports (
+    IncidentID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(), 
+    IncidentType NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(MAX) NOT NULL,                     
+    DateOfIncident DATETIME NOT NULL,
+    ReporterName NVARCHAR(100) NOT NULL,                    
+    ReporterEmail NVARCHAR(255) NOT NULL,                   
+    Location NVARCHAR(255) NOT NULL                         
+);
+
+
+
