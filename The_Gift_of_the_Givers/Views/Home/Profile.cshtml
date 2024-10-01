@@ -1,0 +1,54 @@
+﻿@model The_Gift_of_the_Givers.ViewModels.ProfileViewModel
+
+<!-- Navigation Bar -->
+<nav class="nav justify-content-center mb-4">
+    <a class="nav-link" href="@Url.Action("VolunteerForm", "Volunteer")">Volunteer</a>
+    <a class="nav-link" href="@Url.Action("Donate", "Donations")">Donate</a>
+    <a class="nav-link" href="@Url.Action("UpdateProfile", "Home")">My Profile</a>
+</nav>
+
+<div class="container mt-5">
+    <!-- Welcome Message Section -->
+    <div class="text-center mb-5">
+        <h2>Welcome to the Gift of the Givers, @Model?.Email!</h2>
+        <p class="lead">
+            We are delighted to have you as part of our community! The Gift of the Givers is dedicated to humanitarian aid, and your contributions as a donor or volunteer can make a big difference. Explore ways to get involved below.
+        </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-center">
+        <a href="@Url.Action("ReportIncident", "IncidentReports")" class="btn btn-primary mx-2">Report Incident</a>
+        <a href="@Url.Action("Donate", "Donations")" class="btn btn-success mx-2">Make a Donation</a>
+        <a href="@Url.Action("VolunteerForm", "Volunteer")" class="btn btn-success mx-2">Become a Volunteer</a>
+    </div>
+
+</div>
+
+<!-- Style Section -->
+<style>
+    h2 {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        color: #555;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        color: #007bff;
+        padding: 0.5rem 1rem;
+    }
+
+        .nav-link:hover {
+            color: #0056b3;
+        }
+</style>

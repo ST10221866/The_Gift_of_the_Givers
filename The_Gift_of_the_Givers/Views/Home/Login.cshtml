@@ -1,0 +1,60 @@
+﻿@model The_Gift_of_the_Givers.ViewModels.LoginViewModel
+
+<h2 class="text-center">Login</h2>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal shadow p-4 rounded bg-light" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(m => m.Username, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Enter your username" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+
+                <div class="text-center mt-3">
+                    <p>Don't have an account? <a href="@Url.Action("Register", "Home")">Register here</a></p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f7f7f7;
+    }
+
+    h2 {
+        color: #007bff;
+    }
+
+    .form-horizontal {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+</style>

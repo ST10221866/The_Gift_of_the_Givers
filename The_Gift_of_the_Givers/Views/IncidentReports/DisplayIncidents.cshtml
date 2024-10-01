@@ -1,0 +1,43 @@
+﻿@model IEnumerable<The_Gift_of_the_Givers.Models.IncidentReport>
+
+@{
+    ViewData["Title"] = "Manage Incidents";
+}
+
+<h1 class="text-center my-4">Manage Incidents</h1>
+
+@if (!Model.Any())
+{
+    <p class="text-center text-muted">No incident reports available at the moment.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>Incident Type</th>
+                <th>Description</th>
+                <th>Date of Incident</th>
+                <th>Reporter Name</th>
+                <th>Reporter Email</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var incident in Model)
+            {
+                <tr>
+                    <td>@incident.IncidentType</td>
+                    <td>@incident.Description</td>
+                    <td>@incident.DateOfIncident.ToShortDateString()</td>
+                    <td>@incident.ReporterName</td>
+                    <td>@incident.ReporterEmail</td>
+                    <td>@(string.IsNullOrEmpty(incident.Location) ? "Not Specified" : incident.Location)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<a href="@Url.Action("Dashboard", "Admin")" class="btn btn-primary mt-3">Back.</a>

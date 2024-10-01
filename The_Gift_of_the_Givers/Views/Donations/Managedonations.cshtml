@@ -1,0 +1,47 @@
+﻿@model IEnumerable<The_Gift_of_the_Givers.Models.Donation>
+
+@{
+    ViewData["Title"] = "Manage Donations";
+}
+
+<h1>Manage Donations</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Donation Type</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Donor Name</th>
+            <th>Donor Email</th>
+            <th>Delivery Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var donation in Model)
+        {
+            <tr>
+                <td>@donation.DonationType</td>
+                <td>@donation.Quantity</td>
+                <td>@donation.Description</td>
+                <td>@donation.DonorName</td>
+                <td>@donation.DonorEmail</td>
+                <td>@donation.DeliveryDate.ToShortDateString()</td>
+                <td>@(donation.IsDistributed ? "Distributed" : "Pending")</td>
+                <td>
+                    @if (!donation.IsDistributed)
+                    {
+                        <a asp-action="Distribute" asp-route-id="@donation.DonationID" class="btn btn-success btn-sm">Distribute</a>
+                    }
+                    <a asp-action="Delete" asp-route-id="@donation.DonationID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<a href="@Url.Action("Dashboard", "Admin")" class="btn btn-primary mt-3">Back.</a>
+

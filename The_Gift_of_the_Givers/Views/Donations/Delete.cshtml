@@ -1,0 +1,17 @@
+﻿@model The_Gift_of_the_Givers.Models.Donation
+
+<h2>Delete Donation</h2>
+<h4>Are you sure you want to delete this donation?</h4>
+<div>
+    <h4>@Model.DonationType</h4>
+    <p>Quantity: @Model.Quantity</p>
+    <p>Donor Name: @Model.DonorName</p>
+    <p>Donor Email: @Model.DonorEmail</p>
+    <p>Delivery Date: @Model.DeliveryDate.ToShortDateString()</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="DonationID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Managedonations" class="btn btn-secondary">Cancel</a>
+</form>

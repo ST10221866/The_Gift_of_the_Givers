@@ -1,0 +1,43 @@
+﻿@model The_Gift_of_the_Givers.ViewModels.IncidentReportViewModel
+
+<h1 class="text-center my-4" style="color: #28a745;">Report an Incident</h1>
+
+<form asp-action="ReportIncident" method="post" class="p-4 bg-light rounded shadow-sm" style="max-width: 500px; margin: 0 auto;">
+    <div class="form-group">
+        <label asp-for="IncidentType" class="font-weight-bold" style="color: #28a745;"></label>
+        <input asp-for="IncidentType" class="form-control" placeholder="Enter the type of incident" />
+        <span asp-validation-for="IncidentType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="font-weight-bold" style="color: #28a745;"></label>
+        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Provide a brief description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateOfIncident" class="font-weight-bold" style="color: #28a745;"></label>
+        <input asp-for="DateOfIncident" type="date" class="form-control" />
+        <span asp-validation-for="DateOfIncident" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReporterName" class="font-weight-bold" style="color: #28a745;"></label>
+        <input asp-for="ReporterName" class="form-control" placeholder="Enter your name" />
+        <span asp-validation-for="ReporterName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReporterEmail" class="font-weight-bold" style="color: #28a745;"></label>
+        <input asp-for="ReporterEmail" type="email" class="form-control" placeholder="Enter your email address" />
+        <span asp-validation-for="ReporterEmail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Location" class="font-weight-bold" style="color: #28a745;"></label>
+        <input asp-for="Location" class="form-control" placeholder="Enter location (if applicable)" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block mt-3" style="background-color: #28a745; border-color: #28a745;">Submit Incident</button>
+</form>

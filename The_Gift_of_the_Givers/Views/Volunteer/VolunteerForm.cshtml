@@ -1,0 +1,82 @@
+﻿@model The_Gift_of_the_Givers.ViewModels.VolunteerViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Task - The Gift of the Givers</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff; 
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+            border: 1px solid #007bff; 
+        }
+
+            .form-control:focus {
+                border-color: #0056b3; 
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); 
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+     
+    <div class="container mt-5">
+        <h2>Select Your Task Preferences</h2>
+        <form asp-action="SubmitVolunteer" method="post">
+            <div class="form-group">
+                <label for="taskType">Select Task Type:</label>
+                <select id="taskType" name="TaskType" class="form-control" required>
+                    <option value="">-- Select a Task Type --</option>
+                    <option value="Food Distribution">Food Distribution</option>
+                    <option value="Medical Support">Medical Support</option>
+                    <option value="Logistics">Logistics</option>
+                    <option value="Counseling">Counseling</option>
+                    <option value="Shelter Management">Shelter Management</option>
+                    <option value="Community Outreach">Community Outreach</option>
+                </select>
+            </div>
+            <div class="form-group mt-3">
+                <label for="availability">Availability (Days/Times):</label>
+                <textarea id="availability" name="Availability" class="form-control" rows="4" placeholder="Enter your availability (e.g., Weekdays after 5 PM, Saturdays all day)" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+
+    <footer class="border-top footer text-muted mt-5">
+        <div class="container">
+            &copy; 2024 - The Gift of the Givers - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color: white;">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

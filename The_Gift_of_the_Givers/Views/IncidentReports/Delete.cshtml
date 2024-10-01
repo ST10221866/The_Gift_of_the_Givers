@@ -1,0 +1,18 @@
+﻿@model The_Gift_of_the_Givers.Models.IncidentReport
+
+<h2>Delete Incident</h2>
+<h4>Are you sure you want to delete this incident?</h4>
+<div>
+    <h4>@Model.IncidentType</h4>
+    <p>Description: @Model.Description</p>
+    <p>Date of Incident: @Model.DateOfIncident.ToShortDateString()</p>
+    <p>Reporter Name: @Model.ReporterName</p>
+    <p>Reporter Email: @Model.ReporterEmail</p>
+    <p>Location: @Model.Location</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="IncidentID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="ManageIncidents" class="btn btn-secondary">Cancel</a>
+</form>
